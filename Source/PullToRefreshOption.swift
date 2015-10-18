@@ -15,7 +15,7 @@ public class PullToRefreshOption {
     public var arrowAlpha: Bool = true
     public var imageName: String = "refresh"
     public var animationDuration: Double = 0.4
-    public var fixedTop :Bool = true // PullToRefreshView fixed Top
+    public var fixedTop :Bool = false // PullToRefreshView fixed Top
     
     public init() {
     }
