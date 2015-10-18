@@ -63,7 +63,7 @@ public class PullToRefreshView: UIView {
         self.backgroundView.autoresizingMask = UIViewAutoresizing.FlexibleWidth
         self.addSubview(backgroundView)
         
-        self.arrow = UIImageView(frame: CGRectMake(0, 0, 30, 30))
+        self.arrow = UIImageView(frame: CGRectMake(0, 0, 26, 26))
         self.arrow.autoresizingMask = [.FlexibleLeftMargin, .FlexibleRightMargin]
         
         self.arrow.image = UIImage(named: PullToRefreshConst.imageName, inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)
@@ -109,7 +109,6 @@ public class PullToRefreshView: UIView {
                 
                 // Debug
                 print(scrollView.contentOffset.y)
-                print(arrow.alpha)
                 
                 let offsetWithoutInsets = self.previousOffset + self.scrollViewInsets.top
                 
@@ -121,12 +120,23 @@ public class PullToRefreshView: UIView {
                     return
                 }
                 
+                print(fabs(offsetWithoutInsets))
+                print(self.frame.size.height)
+                
                 // Alpha set
                 if PullToRefreshConst.alpha {
-                    var alpha = fabs(offsetWithoutInsets) / (self.frame.size.height-10)
-                    if alpha > 1 {
+                    let absOffsetWithoutInsets = fabs(offsetWithoutInsets);
+                    var alpha : CGFloat = 0.0
+
+                    if (absOffsetWithoutInsets > 20.0){
+                        alpha = (absOffsetWithoutInsets-20) / (self.frame.size.height-20)
+                    }
+                    
+                    if(alpha > 1){
                         alpha = 1
                     }
+                    
+                    print(alpha)
                     self.arrow.alpha = alpha
                 }
                 
