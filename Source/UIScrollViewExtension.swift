@@ -7,11 +7,13 @@
 import Foundation
 import UIKit
 
+private let pullToRefreshTag = 810
+
 public extension UIScrollView {
-    
+
     private var pullToRefreshView: PullToRefreshView? {
         get {
-            let pullToRefreshView = viewWithTag(PullToRefreshConst.tag)
+            let pullToRefreshView = viewWithTag(pullToRefreshTag)
             return pullToRefreshView as? PullToRefreshView
         }
     }
@@ -21,9 +23,9 @@ public extension UIScrollView {
     }
     
     public func addPullToRefresh(options options: PullToRefreshOption = PullToRefreshOption(), refreshCompletion :(() -> ())) {
-        let refreshViewFrame = CGRectMake(0, -PullToRefreshConst.height, self.frame.size.width, PullToRefreshConst.height)
+        let refreshViewFrame = CGRectMake(0, -options.height, self.frame.size.width, options.height)
         let refreshView = PullToRefreshView(options: options, frame: refreshViewFrame, refreshCompletion: refreshCompletion)
-        refreshView.tag = PullToRefreshConst.tag
+        refreshView.tag = pullToRefreshTag
         addSubview(refreshView)
     }
 
@@ -37,18 +39,20 @@ public extension UIScrollView {
     
     // If you want to PullToRefreshView fixed top potision, Please call this function in scrollViewDidScroll
     public func fixedPullToRefreshViewForDidScroll() {
-        if PullToRefreshConst.fixedTop {
-            if self.contentOffset.y < -PullToRefreshConst.height {
-                if var frame = pullToRefreshView?.frame {
+        
+        if let view = pullToRefreshView{
+            if view.fixedTop {
+                if self.contentOffset.y < -view.options.height {
+                    var frame = view.frame
                     frame.origin.y = self.contentOffset.y
-                    pullToRefreshView?.frame = frame
-                }
-            } else {
-                if var frame = pullToRefreshView?.frame {
-                    frame.origin.y = -PullToRefreshConst.height
-                    pullToRefreshView?.frame = frame
+                    view.frame = frame
+                } else {
+                    var frame = view.frame
+                    frame.origin.y = -view.options.height
+                    view.frame = frame
                 }
             }
+            
         }
     }
 }
