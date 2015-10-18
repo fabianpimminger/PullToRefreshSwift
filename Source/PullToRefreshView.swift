@@ -108,7 +108,7 @@ public class PullToRefreshView: UIView {
             if let scrollView = object as? UIScrollView {
                 
                 // Debug
-                print(scrollView.contentOffset.y)
+                //print(scrollView.contentOffset.y)
                 
                 let offsetWithoutInsets = self.previousOffset + self.scrollViewInsets.top
                 
@@ -120,8 +120,8 @@ public class PullToRefreshView: UIView {
                     return
                 }
                 
-                print(fabs(offsetWithoutInsets))
-                print(self.frame.size.height)
+                //print(fabs(offsetWithoutInsets))
+                //print(self.frame.size.height)
                 
                 // Alpha set
                 if PullToRefreshConst.alpha {
