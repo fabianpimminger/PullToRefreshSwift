@@ -135,7 +135,7 @@ public class PullToRefreshView: UIView {
                         alpha = 1
                     }
                     
-                    print(alpha)
+                    //print(alpha)
                     self.arrow.alpha = alpha
                 }
                 
