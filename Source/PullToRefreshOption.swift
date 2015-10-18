@@ -9,7 +9,7 @@ import UIKit
 struct PullToRefreshConst {
     static let tag = 810
     static let alpha = true
-    static let height: CGFloat = 80
+    static let height: CGFloat = 56
     static let imageName: String = "pulltorefresharrow.png"
     static let animationDuration: Double = 0.4
     static let fixedTop = true // PullToRefreshView fixed Top
