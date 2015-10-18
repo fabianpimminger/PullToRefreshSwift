@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8C37CA2B1A3E815D00B3EFD4 /* pulltorefresharrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C37CA271A3E815D00B3EFD4 /* pulltorefresharrow.png */; };
 		8C37CA2C1A3E815D00B3EFD4 /* PullToRefreshOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C37CA281A3E815D00B3EFD4 /* PullToRefreshOption.swift */; };
 		8C37CA2D1A3E815D00B3EFD4 /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C37CA291A3E815D00B3EFD4 /* PullToRefreshView.swift */; };
 		8C37CA2E1A3E815D00B3EFD4 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C37CA2A1A3E815D00B3EFD4 /* UIScrollViewExtension.swift */; };
+		9B16E62C1BD3A84D005FAFBE /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B16E62B1BD3A84D005FAFBE /* Media.xcassets */; };
 		C53BEC401A357BCA008A4302 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53BEC3F1A357BCA008A4302 /* AppDelegate.swift */; };
 		C53BEC431A357BCA008A4302 /* PullToRefreshSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C53BEC411A357BCA008A4302 /* PullToRefreshSwift.xcdatamodeld */; };
 		C53BEC451A357BCA008A4302 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53BEC441A357BCA008A4302 /* ViewController.swift */; };
@@ -32,10 +32,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8C37CA271A3E815D00B3EFD4 /* pulltorefresharrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pulltorefresharrow.png; sourceTree = "<group>"; };
 		8C37CA281A3E815D00B3EFD4 /* PullToRefreshOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshOption.swift; sourceTree = "<group>"; };
 		8C37CA291A3E815D00B3EFD4 /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
 		8C37CA2A1A3E815D00B3EFD4 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
+		9B16E62B1BD3A84D005FAFBE /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		C53BEC3A1A357BCA008A4302 /* PullToRefreshSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PullToRefreshSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C53BEC3E1A357BCA008A4302 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C53BEC3F1A357BCA008A4302 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,10 +71,10 @@
 		8C37CA261A3E815D00B3EFD4 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				8C37CA271A3E815D00B3EFD4 /* pulltorefresharrow.png */,
 				8C37CA281A3E815D00B3EFD4 /* PullToRefreshOption.swift */,
 				8C37CA291A3E815D00B3EFD4 /* PullToRefreshView.swift */,
 				8C37CA2A1A3E815D00B3EFD4 /* UIScrollViewExtension.swift */,
+				9B16E62B1BD3A84D005FAFBE /* Media.xcassets */,
 			);
 			name = Source;
 			path = ../../Source;
@@ -221,10 +221,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B16E62C1BD3A84D005FAFBE /* Media.xcassets in Resources */,
 				C53BEC481A357BCA008A4302 /* Main.storyboard in Resources */,
 				C53BEC4D1A357BCA008A4302 /* LaunchScreen.xib in Resources */,
 				C53BEC4A1A357BCA008A4302 /* Images.xcassets in Resources */,
-				8C37CA2B1A3E815D00B3EFD4 /* pulltorefresharrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
