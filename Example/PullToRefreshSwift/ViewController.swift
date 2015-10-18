@@ -21,11 +21,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         self.tableView.separatorColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1.0)
         self.tableView.addPullToRefresh({ [weak self] in
-            // some code
-            sleep(1)
-            self?.texts.shuffle()
-            self?.tableView.reloadData()
-            //self?.tableView.stopPullToRefresh()
+
+            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC)))
+            dispatch_after(time, dispatch_get_main_queue()) {
+                self?.texts.shuffle()
+                self?.tableView.reloadData()
+                self?.tableView.stopPullToRefresh()
+            }
         })
     }
     
