@@ -41,7 +41,7 @@ public extension UIScrollView {
     public func fixedPullToRefreshViewForDidScroll() {
         
         if let view = pullToRefreshView{
-            if view.fixedTop {
+            if view.options.fixedTop {
                 if self.contentOffset.y < -view.options.height {
                     var frame = view.frame
                     frame.origin.y = self.contentOffset.y

@@ -16,12 +16,6 @@ public class PullToRefreshView: UIView {
     let contentOffsetKeyPath = "contentOffset"
     var kvoContext = ""
     
-    let arrowAlpha = true
-    let imageName: String = "refresh"
-    let animationDuration: Double = 0.4
-    let fixedTop :Bool = true // PullToRefreshView fixed Top
-
-    
     var options: PullToRefreshOption!
     private var backgroundView: UIView!
     private var arrow: UIImageView!
@@ -71,7 +65,7 @@ public class PullToRefreshView: UIView {
         self.arrow = UIImageView(frame: CGRectMake(0, 0, 26, 26))
         self.arrow.autoresizingMask = [.FlexibleLeftMargin, .FlexibleRightMargin]
         
-        self.arrow.image = UIImage(named: self.imageName, inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)
+        self.arrow.image = UIImage(named: self.options.imageName, inBundle: NSBundle(forClass: self.dynamicType), compatibleWithTraitCollection: nil)
         self.addSubview(arrow)
         
         self.indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
@@ -129,7 +123,7 @@ public class PullToRefreshView: UIView {
                 //print(self.frame.size.height)
                 
                 // Alpha set
-                if self.arrowAlpha {
+                if self.options.arrowAlpha {
                     let absOffsetWithoutInsets = fabs(offsetWithoutInsets);
                     var alpha : CGFloat = 0.0
 
@@ -146,7 +140,7 @@ public class PullToRefreshView: UIView {
                 }
                 
                 // Backgroundview frame set
-                if self.fixedTop {
+                if self.options.fixedTop {
                     if self.options.height < fabs(offsetWithoutInsets) {
                         self.backgroundView.frame.size.height = fabs(offsetWithoutInsets)
                     } else {
@@ -187,7 +181,7 @@ public class PullToRefreshView: UIView {
             var insets = scrollView.contentInset
             insets.top += self.frame.size.height
             scrollView.contentOffset.y = self.previousOffset
-            UIView.animateWithDuration(self.animationDuration, delay: 0, options:[], animations: {
+            UIView.animateWithDuration(self.options.animationDuration, delay: 0, options:[], animations: {
                 scrollView.contentInset = insets
                 scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, -insets.top)
                 }, completion: {finished in
@@ -208,7 +202,7 @@ public class PullToRefreshView: UIView {
         self.arrow.hidden = false
         
         if let scrollView = superview as? UIScrollView {
-            UIView.animateWithDuration(self.animationDuration, animations: { () -> Void in
+            UIView.animateWithDuration(self.options.animationDuration, animations: { () -> Void in
                 scrollView.contentInset = self.scrollViewInsets
                 }) { (Bool) -> Void in
                     

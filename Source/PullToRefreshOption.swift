@@ -12,6 +12,10 @@ public class PullToRefreshOption {
     public var autoStopTime: Double = 0 // 0 is not auto stop
     public var fixedSectionHeader = false  // Update the content inset for fixed section headers
     public var height: CGFloat = 56
+    public var arrowAlpha: Bool = true
+    public var imageName: String = "refresh"
+    public var animationDuration: Double = 0.4
+    public var fixedTop :Bool = true // PullToRefreshView fixed Top
     
     public init() {
     }
