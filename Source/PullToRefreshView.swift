@@ -36,6 +36,8 @@ public class PullToRefreshView: UIView {
                 stopAnimating()
             case .Refreshing:
                 startAnimating()
+            case .Pulling:
+                startRefreshing()
             default:
                 break
             }
@@ -106,7 +108,8 @@ public class PullToRefreshView: UIView {
             if let scrollView = object as? UIScrollView {
                 
                 // Debug
-                //println(scrollView.contentOffset.y)
+                print(scrollView.contentOffset.y)
+                print(arrow.alpha)
                 
                 let offsetWithoutInsets = self.previousOffset + self.scrollViewInsets.top
                 
@@ -120,9 +123,9 @@ public class PullToRefreshView: UIView {
                 
                 // Alpha set
                 if PullToRefreshConst.alpha {
-                    var alpha = fabs(offsetWithoutInsets) / (self.frame.size.height + 30)
-                    if alpha > 0.8 {
-                        alpha = 0.8
+                    var alpha = fabs(offsetWithoutInsets) / (self.frame.size.height-10)
+                    if alpha > 1 {
+                        alpha = 1
                     }
                     self.arrow.alpha = alpha
                 }
@@ -146,13 +149,10 @@ public class PullToRefreshView: UIView {
                     if (scrollView.dragging == false && self.state != .Refreshing) {
                         self.state = .Refreshing
                     } else if (self.state != .Refreshing) {
-                        self.arrowRotation()
                         self.state = .Pulling
                     }
-                } else if (self.state != .Refreshing && offsetWithoutInsets < 0) {
-                    // normal
-                    self.arrowRotationBack()
                 }
+                
                 self.previousOffset = scrollView.contentOffset.y
             }
         } else {
@@ -167,13 +167,11 @@ public class PullToRefreshView: UIView {
         self.arrow.hidden = true
         
         if let scrollView = superview as? UIScrollView {
-            scrollViewBounces = scrollView.bounces
             scrollViewInsets = scrollView.contentInset
             
             var insets = scrollView.contentInset
             insets.top += self.frame.size.height
             scrollView.contentOffset.y = self.previousOffset
-            scrollView.bounces = false
             UIView.animateWithDuration(PullToRefreshConst.animationDuration, delay: 0, options:[], animations: {
                 scrollView.contentInset = insets
                 scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, -insets.top)
@@ -195,7 +193,6 @@ public class PullToRefreshView: UIView {
         self.arrow.hidden = false
         
         if let scrollView = superview as? UIScrollView {
-            scrollView.bounces = self.scrollViewBounces
             UIView.animateWithDuration(PullToRefreshConst.animationDuration, animations: { () -> Void in
                 scrollView.contentInset = self.scrollViewInsets
                 }) { (Bool) -> Void in
@@ -204,16 +201,8 @@ public class PullToRefreshView: UIView {
         }
     }
     
-    private func arrowRotation() {
-        UIView.animateWithDuration(0.2, delay: 0, options:[], animations: {
-            // -0.0000001 for the rotation direction control
-            self.arrow.transform = CGAffineTransformMakeRotation(CGFloat(M_PI-0.0000001))
-        }, completion:nil)
-    }
-    
-    private func arrowRotationBack() {
-        UIView.animateWithDuration(0.2, delay: 0, options:[], animations: {
-            self.arrow.transform = CGAffineTransformIdentity
-            }, completion:nil)
+    private func startRefreshing() {
+        self.indicator.startAnimating()
+        self.arrow.hidden = true
     }
 }
